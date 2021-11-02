@@ -1,5 +1,12 @@
-const fs = require("fs");
+const fs = require("fs/promises");
 
-const files = fs.readdirSync("./");
+async function _readdir(path) {
+  try {
+    const files = await fs.readdir(path);
+    console.log(files);
+  } catch (err) {
+    console.log(err);
+  }
+}
 
-console.log(files);
+_readdir("./");
