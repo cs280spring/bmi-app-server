@@ -1,8 +1,11 @@
 const http = require("http");
+const fs = require("fs");
+
+const file = fs.readFileSync("./index.html", "utf8");
 
 const server = http.createServer((request, response) => {
   response.writeHead(200, { "Content-Type": "text/html" });
-  response.write(`<h1>Hello HTTP Module!</h1>`);
+  response.write(file);
   response.end();
 });
 
